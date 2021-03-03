@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Alert from "../Alert";
 import "./style.css";
@@ -7,6 +8,7 @@ function Card({ estudante,  funcaoAtualizar, setEstudantes }) {
 
 	const [hidden, setHidden] = useState(false);
 	const [alerts, setAlerts] = useState([]);
+	const history = useHistory();
 
 	const toogleDescription = (e) => {
 		e.preventDefault();
@@ -73,7 +75,7 @@ function Card({ estudante,  funcaoAtualizar, setEstudantes }) {
 						<div className="actions">
 							<div>
 							<button className="btn btn-exclude" onClick={deletar}>Excluir</button>
-								<button className="btn btn-update" onClick={ () => window.location.href = "http://localhost:3000/atualizar-aluno/" + estudante.id + "#title" }>Editar</button>
+								<button className="btn btn-update" onClick={ () => history.push("/atualizar-aluno/" + estudante.id +  "#title"); }>Editar</button>
 							</div>
 							</div>
 					</div></div>
