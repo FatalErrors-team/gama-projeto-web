@@ -6,7 +6,7 @@ function NavBar({ administrador }) {
 
 	function logout() {
 		localStorage.clear();
-		window.location.href = "http://localhost:3000/autenticacao";
+		window.location.reload();
 	}
 
 	return (
