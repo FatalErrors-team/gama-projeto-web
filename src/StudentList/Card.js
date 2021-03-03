@@ -75,7 +75,7 @@ function Card({ estudante,  funcaoAtualizar, setEstudantes }) {
 						<div className="actions">
 							<div>
 							<button className="btn btn-exclude" onClick={deletar}>Excluir</button>
-								<button className="btn btn-update" onClick={ () => history.push("/atualizar-aluno/" + estudante.id +  "#title"); }>Editar</button>
+								<button className="btn btn-update" onClick={ () => {  history.push("/atualizar-aluno/" + estudante.id +  "#title"); } } >Editar</button>
 							</div>
 							</div>
 					</div></div>
