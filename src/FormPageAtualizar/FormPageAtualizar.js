@@ -77,6 +77,7 @@ function FormPage() {
     e.preventDefault();
 
     const formatedData = {
+      id: formData.id,
       nome: formData.nome.trim(),
       email: formData.email.trim(),
       telefone: formData.telefone.trim(),
