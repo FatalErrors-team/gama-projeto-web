@@ -83,16 +83,16 @@ function FormPage() {
       endereco: {
         cep: formData.cep.trim(),
         logradouro: formData.logradouro.trim(),
-        numero: formData.numero.trim(),
+        numero: formData.numero,
       },
       curso: {
         nome: formData.curso.trim(),
         disciplina: formData.disciplina.trim(),
       },
-      nota01: formData.nota01.trim(),
-      nota02: formData.nota02.trim(),
-      notaApresentacao: formData.notaApresentacao.trim(),
-      notaTrabalho: formData.notaTrabalho.trim(),
+      nota01: formData.nota01,
+      nota02: formData.nota02,
+      notaApresentacao: formData.notaApresentacao,
+      notaTrabalho: formData.notaTrabalho,
     };
 
     axios({
