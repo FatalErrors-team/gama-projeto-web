@@ -31,7 +31,7 @@ function FormPage() {
   function handleChange(e) {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value.trim(),
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -77,23 +77,22 @@ function FormPage() {
     e.preventDefault();
 
     const formatedData = {
-      id,
-      nome: formData.nome,
-      email: formData.email,
-      telefone: formData.telefone,
+      nome: formData.nome.trim(),
+      email: formData.email.trim(),
+      telefone: formData.telefone.trim(),
       endereco: {
-        cep: formData.cep,
-        logradouro: formData.logradouro,
-        numero: formData.numero,
+        cep: formData.cep.trim(),
+        logradouro: formData.logradouro.trim(),
+        numero: formData.numero.trim(),
       },
       curso: {
-        nome: formData.curso,
-        disciplina: formData.disciplina,
+        nome: formData.curso.trim(),
+        disciplina: formData.disciplina.trim(),
       },
-      nota01: formData.nota01,
-      nota02: formData.nota02,
-      notaApresentacao: formData.notaApresentacao,
-      notaTrabalho: formData.notaTrabalho,
+      nota01: formData.nota01.trim(),
+      nota02: formData.nota02.trim(),
+      notaApresentacao: formData.notaApresentacao.trim(),
+      notaTrabalho: formData.notaTrabalho.trim(),
     };
 
     axios({
