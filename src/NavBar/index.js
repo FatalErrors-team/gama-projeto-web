@@ -19,7 +19,7 @@ function NavBar({ administrador }) {
       localStorage.setItem("data", "MONGO");
       setData("MONGO");
     }
-    window.location.reload();
+    window.location.href = "https://gama-alunos.netlify.app";
   }
 
   return (
