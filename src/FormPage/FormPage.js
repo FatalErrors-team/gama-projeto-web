@@ -54,11 +54,12 @@ function FormPage() {
 
     axios({
       method: "POST",
-      url: "https://boiling-river-79785.herokuapp.com/alunos",
+      url: "https://gama-alunos-node.herokuapp.com/api/v1/alunos",
       data: JSON.stringify(formatedData),
       headers: {
         "Content-Type": "application/json",
         Authorization: localStorage.getItem("token"),
+        "X-Persistence-Type": localStorage.getItem("data"),
       },
     })
       .then((response) => {
@@ -85,7 +86,12 @@ function FormPage() {
     <>
       {alerts.map((alert) => {
         return (
-          <Alert texto={alert.texto} tempo={alert.tempo} link={alert.link} />
+          <Alert
+            texto={alert.texto}
+            tempo={alert.tempo}
+            link={alert.link}
+            key={alert.texto}
+          />
         );
       })}
       <div className="form__container">

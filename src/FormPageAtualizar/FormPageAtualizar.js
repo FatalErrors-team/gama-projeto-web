@@ -37,18 +37,22 @@ function FormPage() {
 
   useEffect(() => {
     function popular(setFormData) {
+      console.log("https://gama-alunos-node.herokuapp.com/api/v1/alunos/" + id);
       axios({
         method: "GET",
-        url: "https://boiling-river-79785.herokuapp.com/alunos/" + id,
+        url: "https://gama-alunos-node.herokuapp.com/api/v1/alunos/" + id,
         headers: {
           Authorization: localStorage.getItem("token"),
+          "X-Persistence-Type": localStorage.getItem("data"),
         },
       })
         .then((response) => {
           const data = response.data.data;
-
+          if (data._id) {
+            data.id = data._id;
+          }
           const modelo = {
-            id: data.id,
+            id: data.id.toString(),
             nome: data.nome,
             email: data.email,
             telefone: data.telefone,
@@ -62,11 +66,10 @@ function FormPage() {
             notaApresentacao: data.notaApresentacao,
             notaTrabalho: data.notaTrabalho,
           };
-
           setFormData(modelo);
         })
         .catch(() => {
-          history.push("/");
+          // history.push("/");
         });
     }
 
@@ -77,7 +80,7 @@ function FormPage() {
     e.preventDefault();
 
     const formatedData = {
-      id: formData.id,
+      id: formData.id.toString(),
       nome: formData.nome.trim(),
       email: formData.email.trim(),
       telefone: formData.telefone.trim(),
@@ -97,12 +100,13 @@ function FormPage() {
     };
 
     axios({
-      method: "PUT",
-      url: "https://boiling-river-79785.herokuapp.com/alunos/" + id,
+      method: "PATCH",
+      url: "https://gama-alunos-node.herokuapp.com/api/v1/alunos/" + id,
       data: JSON.stringify(formatedData),
       headers: {
         "Content-Type": "application/json",
         Authorization: localStorage.getItem("token"),
+        "X-Persistence-Type": localStorage.getItem("data"),
       },
     })
       .then((response) => {
@@ -123,7 +127,12 @@ function FormPage() {
     <>
       {alerts.map((alert) => {
         return (
-          <Alert texto={alert.texto} tempo={alert.tempo} link={alert.link} />
+          <Alert
+            texto={alert.texto}
+            tempo={alert.tempo}
+            link={alert.link}
+            key={alert.texto}
+          />
         );
       })}
       <div className="form__container">
