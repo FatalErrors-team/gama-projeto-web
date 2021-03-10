@@ -37,6 +37,7 @@ function Card({ estudante, funcaoAtualizar, setEstudantes }) {
       url: "https://gama-alunos-node.herokuapp.com/api/v1/alunos/" + id,
       headers: {
         Authorization: localStorage.getItem("token"),
+        "X-Persistence-Type": localStorage.getItem("data"),
       },
     });
     if (response.status === 204) {
