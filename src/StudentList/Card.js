@@ -26,10 +26,15 @@ function Card({ estudante, funcaoAtualizar, setEstudantes }) {
 
   async function deletar(e) {
     e.preventDefault();
+    let id;
+    if (estudante._id) {
+      id = estudante._id;
+    } else {
+      id = estudante.id;
+    }
     const response = await axios({
       method: "DELETE",
-      url:
-        "https://gama-alunos-node.herokuapp.com/api/v1/alunos/" + estudante._id,
+      url: "https://gama-alunos-node.herokuapp.com/api/v1/alunos/" + id,
       headers: {
         Authorization: localStorage.getItem("token"),
       },
