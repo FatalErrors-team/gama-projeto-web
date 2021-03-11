@@ -21,6 +21,7 @@ async function obterAdministrador(setAdministrador, redirectUrl) {
 			setAdministrador(response.data.data);
 		}
 	} catch {
+		localStorage.clear();
 		window.location.href = redirectUrl;
 	}
 }
