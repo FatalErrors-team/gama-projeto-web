@@ -113,7 +113,7 @@ function FormPage() {
         if (response.status === 200) {
           setAlerts([
             ...alerts,
-            { texto: "Atualizado com sucesso!", tempo: 2000 },
+						{ texto: "Atualizado com sucesso!", tempo: 2000, link: "/#lista-de-alunos" },
           ]);
         } else {
           setAlerts([...alerts, { texto: "Houve algum erro!", tempo: 2000 }]);

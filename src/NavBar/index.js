@@ -8,7 +8,7 @@ function NavBar({ administrador }) {
     localStorage.clear();
     window.location.reload();
   }
-
+	
   const [data, setData] = useState(localStorage.getItem("data"));
 
   function alterarBanco() {
@@ -18,8 +18,10 @@ function NavBar({ administrador }) {
     } else {
       localStorage.setItem("data", "MONGO");
       setData("MONGO");
-    }
-    window.location.href = "https://gama-alunos.netlify.app";
+		}
+	
+		const redirectUrl = (window.location.protocol + "//" + window.location.hostname + ":" + window.location.port);
+		window.location.href = redirectUrl;
   }
 
   return (
